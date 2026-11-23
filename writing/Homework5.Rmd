@@ -5,7 +5,7 @@ date: "12/09/2026"
 output: html_document
 ---
 
-```{r load packages}
+```{r load packages, include=FALSE}
 library(tidyverse)
 library(tigris)
 library(sf)
@@ -13,7 +13,7 @@ library(viridis)
 library(here)
 ```
 
-```{r load in and filter data}
+```{r load in and filter data, message=FALSE, warning=FALSE}
 homicides <- read.csv(here("data", "homicide-data.csv"))
 str(homicides)
 
@@ -28,14 +28,14 @@ Omaha_homicides <- Omaha_homicides |>
 
 ```
 
-```{r isolate Omaha for mapping}
+```{r isolate Omaha for mapping, message=FALSE, warning=FALSE}
 omaha_map <- county_subdivisions(county = "Douglas", state = "Nebraska") 
 
 ggplot() + 
   geom_sf(data = omaha_map)
 ```
  
-```{r}
+```{r message=FALSE, warning=FALSE}
 omaha_homicides_2 <- st_as_sf(Omaha_homicides, coords = c("lon", "lat")) |> 
   st_set_crs(4326)
 
