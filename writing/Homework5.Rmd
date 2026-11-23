@@ -39,7 +39,7 @@ omaha_homicides_2 <- st_as_sf(Omaha_homicides, coords = c("lon", "lat")) |>
 
 ggplot() +
   geom_sf(data = omaha_map, color = "lightgray") +
-  geom_sf(data = omaha_homicides_2, aes(color = disposition)) 
+  geom_sf(data = omaha_homicides_2, aes(color = fct_lump(victim_race, n = 3)))
 
 ```
  
