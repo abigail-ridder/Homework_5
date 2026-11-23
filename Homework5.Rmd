@@ -3,3 +3,8 @@ title: "Homework5"
 output: html_document
 ---
 
+```{r load packages}
+library(tidyverse)
+library(tigris)
+
+```
