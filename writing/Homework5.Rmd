@@ -25,9 +25,9 @@ Omaha_homicides <- homicides |>
 ```
 
 ```{r}
-omaha
+omaha_map <- county_subdivisions(county = "Douglas", state = "Nebraska") 
 
 ggplot() + 
-  geom_sf(data = Omaha_homicides)
+  geom_sf(data = omaha_map)
 ```
 
