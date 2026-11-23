@@ -3,14 +3,20 @@ title: "Homework_5"
 output: html_document
 ---
 
-```{r}
-list.files("data")
+```{r load packages}
+library(tidyverse)
+library(tigris)
+
 
 ```
 
 
 ```{r load in data}
 homicides <- read.csv("data/homicide-data.csv")
+str(homicides)
+
+Omaha_homicides <- homicides |> 
+  filter(city == "Omaha")
 
 ```
 
