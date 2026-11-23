@@ -24,10 +24,22 @@ Omaha_homicides <- homicides |>
 
 ```
 
-```{r}
+```{r isolate Omaha for mapping}
 omaha_map <- county_subdivisions(county = "Douglas", state = "Nebraska") 
 
 ggplot() + 
   geom_sf(data = omaha_map)
 ```
 
+ Use different facets for solved versus unsolved homicides and different colors to show the three race groups with the highest number of homicides for that city (you may find the fct_lump function from forcats useful for this).
+ 
+```{r}
+omaha_homicides_2 <- st_as_sf(Omaha_homicides, coords = c("lon", "lat")) |> 
+  st_set_crs(4326)
+
+ggplot() +
+  geom_sf(data = omaha_map, color = "lightgray") +
+  geom_sf(data = omaha_homicides_2, aes(color = disposition)) 
+
+```
+ 
