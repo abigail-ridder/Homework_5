@@ -3,3 +3,7 @@ title: "Homework_5"
 output: html_document
 ---
 
+```{r}
+list.files("data")
+
+```
