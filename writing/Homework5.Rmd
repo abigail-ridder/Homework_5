@@ -2,8 +2,11 @@
 title: "Homework_5"
 author: "Abigail Ridder"
 date: "12/09/2026"
-output: html_document
+output:
+  pdf_document: default
 ---
+
+# Load in packages: 
 
 ```{r load packages, include=FALSE}
 library(tidyverse)
@@ -13,9 +16,10 @@ library(viridis)
 library(here)
 ```
 
-```{r load in and filter data, message=FALSE, warning=FALSE, include=FALSE}
+# Loan in data and filter: 
+
+```{r load in and filter data, message=FALSE, warning=FALSE}
 homicides <- read.csv(here("data", "homicide-data.csv"))
-str(homicides)
 
 homicides <- homicides |> 
   mutate( city = str_to_lower(city))
@@ -28,14 +32,18 @@ Omaha_homicides <- Omaha_homicides |>
 
 ```
 
-```{r isolate Omaha for mapping, message=FALSE, warning=FALSE, include=FALSE}
+# Isolate Omaha for Mapping
+
+```{r isolate Omaha for mapping, message=FALSE, warning=FALSE}
 omaha_map <- county_subdivisions(county = "Douglas", state = "Nebraska") 
 
 omaha_homicides_2 <- st_as_sf(Omaha_homicides, coords = c("lon", "lat")) |> 
   st_set_crs(4326)
 
 ```
- 
+
+# Make map of Omaha Homicides
+
 ```{r make map of Omaha homicides, message=FALSE, warning=FALSE}
 
 ggplot() +
