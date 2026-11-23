@@ -22,7 +22,7 @@ homicides <- homicides |>
 Omaha_homicides <- homicides |> 
   filter(city == "omaha")
 
-Omaha_homicides |> 
+Omaha_homicides <- Omaha_homicides |> 
   mutate(outcome = if_else(disposition == "Closed by arrest", "Solved", "Unsolved"))
 
 ```
@@ -43,7 +43,7 @@ omaha_homicides_2 <- st_as_sf(Omaha_homicides, coords = c("lon", "lat")) |>
 ggplot() +
   geom_sf(data = omaha_map, color = "lightgray") +
   geom_sf(data = omaha_homicides_2, aes(color = fct_lump(victim_race, n = 3))) +
-  facet_wrap(~disposition)
+  facet_wrap(~ outcome)
 
 ```
  
