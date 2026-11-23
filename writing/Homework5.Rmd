@@ -45,7 +45,9 @@ ggplot() +
   geom_sf(data = omaha_homicides_2, aes(color = fct_lump(victim_race, n = 3))) +
   facet_wrap(~ outcome,
              nrow = 2) +
-   scale_color_viridis(name = "Race", discrete = TRUE)
+   scale_color_viridis(name = "Race", discrete = TRUE) +
+  ggtitle("Omaha Area Homicides") +
+  theme_linedraw(ink = "gray28")
 
 ```
  
