@@ -11,7 +11,13 @@ library(tigris)
 
 
 ```{r load in data}
-homicides <- read.csv("data/homicide-data.csv")
+homicides <- read.csv("data/homicide-data.csv") 
 str(homicides)
+
+homicides |> 
+  mutate( city = str_to_lower(city))
+
+Omaha_homicides <- homicides |> 
+  filter(city == "omaha")
 
 ```
